@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../config/app_palette.dart';
-import '../../../home.dart';
+import '../../home/views/home_view.dart';
+import '../../main_screen/views/main_screen_view.dart';
 
 class LoginController extends GetxController {
 
@@ -28,7 +29,7 @@ class LoginController extends GetxController {
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) => displayUserName = auth.currentUser!.displayName ?? "");
       update();
-      Get.offAll(Home());
+      Get.offAll(MainScreenView());
     } on FirebaseAuthException catch (error) {
       String title = error.code.replaceAll(RegExp("-"), " ");
       String message = '';
@@ -57,7 +58,7 @@ class LoginController extends GetxController {
       displayUserName = googleUser!.displayName!;
       displayPhoto = googleUser.photoUrl!;
       update();
-      Get.offAll(Home());
+      Get.offAll(MainScreenView());
     }catch(error){
       print("this the errorrrrrrrrrrrrrrrrrrrrrrrrrr????????????????????// ${error.toString()}");
       Get.snackbar(

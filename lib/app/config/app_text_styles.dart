@@ -33,7 +33,7 @@ class AppTextStyles {
       text!,
       style: TextStyle(
         fontSize: 16.sp,
-        color: color ?? (isDarkMode ? AppPalette.grey[900] : AppPalette.grey[50]),
+        color: color ?? (isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900]),
         // fontFamily:
       ),
     );

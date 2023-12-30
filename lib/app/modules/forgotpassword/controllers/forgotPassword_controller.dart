@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 import '../../../config/app_palette.dart';
-import '../../../home.dart';
 
 class ForgotPasswordController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;

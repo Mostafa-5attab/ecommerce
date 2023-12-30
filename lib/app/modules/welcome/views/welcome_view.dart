@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 // * Local files
+import '../../home/views/home_view.dart';
+import '../../main_screen/views/main_screen_view.dart';
 import '../../signup/views/signup_view.dart';
 import '../controllers/welcome_controller.dart';
 
@@ -63,7 +65,7 @@ class WelcomeView extends GetView<WelcomeController> {
                       child: Row(
                     children: [
                       AppTextStyles.md(
-                        text: "Asroo",
+                        text: "K",
                         color: AppPalette.darkGreen[600],
                       ),
                       AppSizedBoxStyles.smWidth(),
@@ -84,7 +86,9 @@ class WelcomeView extends GetView<WelcomeController> {
                       padding: EdgeInsets.symmetric(
                           vertical: 10.h, horizontal: 13.w),
                       backgroundColor: AppPalette.darkGreen[600]),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAll(() => const MainScreenView());
+                  },
                   child: AppTextStyles.md(
                     text: "Get Start",
                   ),
@@ -96,7 +100,7 @@ class WelcomeView extends GetView<WelcomeController> {
                     AppTextStyles.sm(text: "Don`t have an Acconut ?"),
                     InkWell(
                       onTap: () {
-                        Get.offAll(() =>SignupView());
+                        Get.offAll(() => SignupView());
                       },
                       child: AppTextStyles.sm(
                         text: "Sigun Up",

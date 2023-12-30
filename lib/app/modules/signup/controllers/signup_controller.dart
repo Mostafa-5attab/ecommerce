@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../home.dart';
+import '../../home/views/home_view.dart';
+import '../../main_screen/views/main_screen_view.dart';
 
 class SignupController extends GetxController {
   bool isVisibilty = false;
@@ -34,7 +35,7 @@ class SignupController extends GetxController {
         auth.currentUser!.updateDisplayName(name);
       });
       update();
-      Get.offAll(Home());
+      Get.offAll(MainScreenView());
     } on FirebaseAuthException catch (error) {
       String title = error.code.replaceAll(RegExp("-"), " ");
       String message = '';
