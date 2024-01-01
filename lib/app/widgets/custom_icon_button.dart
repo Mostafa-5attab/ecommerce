@@ -6,11 +6,13 @@ import 'package:get/get.dart';
 class CustomIconButton extends StatelessWidget {
   final IconData icon;
   final Function onPressed;
+  final Color? color;
 
   const CustomIconButton({
     super.key,
     required this.icon,
     required this.onPressed,
+    this.color,
   });
 
   @override
@@ -22,7 +24,7 @@ class CustomIconButton extends StatelessWidget {
       icon: Icon(
         icon,
         size: 20.sp,
-        color: Get.isDarkMode ? AppPalette.grey[900] : AppPalette.grey[50],
+        color:color??(Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900]),
       ),
     );
   }

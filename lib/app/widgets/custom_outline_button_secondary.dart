@@ -5,7 +5,7 @@
 // * Packages
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
 
 // * Local files
 import '../config/app_palette.dart';
@@ -18,9 +18,9 @@ import '../config/app_text_styles.dart';
 // Useful for creating buttons with a consistent outline style throughout the application.
 
 class CustomOutiLineButtonSecondary extends StatelessWidget {
-
   final String title;
-  final Function function ;
+  final Function function;
+
   final Color? color;
 
   const CustomOutiLineButtonSecondary({
@@ -36,20 +36,28 @@ class CustomOutiLineButtonSecondary extends StatelessWidget {
       width: double.infinity,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.sp)),
-            padding:  EdgeInsets.all(16.0.r),
-            textStyle:  TextStyle(fontSize: 28.sp,),
-            backgroundColor: color ?? AppPalette.blue,
-            foregroundColor: color  ,
-            side:  BorderSide(
-              width: 1.w,
-              color: color ?? AppPalette.blue,
-            )),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.sp)),
+          padding: EdgeInsets.all(16.0.r),
+          textStyle: TextStyle(
+            fontSize: 28.sp,
+          ),
+          backgroundColor: color ??(Get.isDarkMode
+              ? AppPalette.red[600]
+              : AppPalette.darkGreen[600])!,
+          foregroundColor: color,
+          side: BorderSide(
+            width: 1.w,
+            color: color ??
+                (Get.isDarkMode
+                    ? AppPalette.red[600]
+                    : AppPalette.darkGreen[600])!,
+          ),
+        ),
         onPressed: () {
           function();
         },
-        child:  AppTextStyles.md(
-            text: title, color: AppPalette.grey[50]),
+        child: AppTextStyles.md(text: title, color: AppPalette.grey[50]),
       ),
     );
   }

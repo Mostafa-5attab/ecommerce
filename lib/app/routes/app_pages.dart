@@ -27,6 +27,7 @@ class AppPages {
   AppPages._();
 
   static const INITIAL = Routes.WELCOME;
+  static const mainScreen = Routes.MAIN_SCREEN;
 
   static final routes = [
     GetPage(

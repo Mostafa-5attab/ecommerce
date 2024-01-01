@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../home/views/home_view.dart';
+import '../../login/controllers/login_controller.dart';
 import '../../main_screen/views/main_screen_view.dart';
 
 class SignupController extends GetxController {
@@ -34,6 +34,8 @@ class SignupController extends GetxController {
         displayUserName = name;
         auth.currentUser!.updateDisplayName(name);
       });
+      isSignIn =true;
+      authBox.write("auth", isSignIn);
       update();
       Get.offAll(MainScreenView());
     } on FirebaseAuthException catch (error) {
@@ -58,9 +60,11 @@ class SignupController extends GetxController {
     }
   }
 
-  void signUpWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-    displayUserName = googleUser!.displayName!;
-    displayPhoto = googleUser.photoUrl!;
-  }
+  // void signUpWithGoogle() async {
+  //   final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+  //   displayUserName = googleUser!.displayName!;
+  //   displayPhoto = googleUser.photoUrl!;
+  //   isSignIn = true;
+  //   update();
+  // }
 }

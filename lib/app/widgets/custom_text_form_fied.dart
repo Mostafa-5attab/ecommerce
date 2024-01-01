@@ -16,6 +16,8 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? textInputType;
   final bool? filled;
   final IconData? prefixIcon;
+  final Color? prefixIconColor;
+
   final IconData? suffixIcon;
   final String? hintText;
   final TextEditingController textEditingController;
@@ -36,6 +38,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.validator,
     this.suffixIconFunction,
     required this.obscureText,
+    this.prefixIconColor,
   });
 
   @override
@@ -46,6 +49,7 @@ class CustomTextFormField extends StatelessWidget {
         SizedBox(
           width: width?.w ?? double.infinity,
           child: TextFormField(
+            style: TextStyle(color: AppPalette.grey[900]),
             validator: (value) {
               return validator(value);
             },
@@ -54,38 +58,62 @@ class CustomTextFormField extends StatelessWidget {
             cursorColor: AppPalette.grey[600],
             obscureText: obscureText,
             decoration: InputDecoration(
-                hintStyle: TextStyle(
-                  color: Get.isDarkMode
-                      ? AppPalette.grey[600]
-                      : AppPalette.grey[700],
+              hintStyle: TextStyle(
+                color: Get.isDarkMode
+                    ? AppPalette.grey[700]
+                    : AppPalette.grey[700],
+              ),
+              filled: filled,
+              fillColor:
+                  Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[200],
+              // suffixIcon: IconButton(
+              //   onPressed: () {
+              //     suffixIconFunction!();
+              //   },
+              //   icon: Icon(suffixIcon),
+              //   color: AppPalette.grey[900],
+              // ),
+              prefixIcon: Icon(
+                prefixIcon,
+                color: prefixIconColor ??
+                    (Get.isDarkMode
+                        ? AppPalette.red[600]
+                        : AppPalette.darkGreen[600]),
+              ),
+              hintText: hintText,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(7.0.r)),
+                borderSide: BorderSide(
+                    color: (Get.isDarkMode
+                        ? AppPalette.grey[50]
+                        : AppPalette.grey[200])!),
+              ),
+              // fillColor: Colors.white,
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(7.0.r),
+                borderSide: BorderSide(
+                  color: (Get.isDarkMode
+                      ? AppPalette.grey[50]
+                      : AppPalette.grey[200])!,
                 ),
-                filled: filled,
-                fillColor:
-                    Get.isDarkMode ? AppPalette.grey[600] : AppPalette.grey[50],
-                suffixIcon: InkWell(
-                  child: Icon(suffixIcon, color: AppPalette.grey[900]),
-                  onTap: (){
-                    suffixIconFunction!();
-                  },
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(7.0.r),
+                borderSide: BorderSide(
+                  color: (Get.isDarkMode
+                      ? AppPalette.grey[50]
+                      : AppPalette.grey[200])!,
                 ),
-                prefixIcon: Icon(
-                  prefixIcon,
-                  color: Get.isDarkMode
-                      ? AppPalette.darkGreen[600]
-                      : AppPalette.red[600],
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(7.0.r),
+                borderSide: BorderSide(
+                  color: (Get.isDarkMode
+                      ? AppPalette.grey[50]
+                      : AppPalette.grey[200])!,
                 ),
-                hintText: hintText,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(7.0.r)),
-                  borderSide: BorderSide(color: AppPalette.grey[900]!),
-                ),
-                // fillColor: Colors.white,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(7.0.r),
-                  borderSide: BorderSide(
-                    color: AppPalette.grey[50]!,
-                  ),
-                )),
+              ),
+            ),
           ),
         ),
       ],

@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 import '../../../config/app_palette.dart';
 import '../../../utils/RXP.dart';
 import '../../../widgets/custom_outline_button_secondary.dart';
-import '../../../widgets/widgetSignUp/container_under.dart';
+import '../../../widgets/widget_signUp_and_login/container_under.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -24,10 +24,9 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.lazyPut(() => LoginController());
+    Get.lazyPut(() => LoginController());
     return Scaffold(
-      backgroundColor:
-          Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900],
+      backgroundColor: context.theme.colorScheme.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -51,32 +50,32 @@ class LoginView extends GetView<LoginController> {
                               AppTextStyles.xl(
                                 text: "Log",
                                 color: Get.isDarkMode
-                                    ? AppPalette.darkGreen[700]
-                                    : AppPalette.red[600],
+                                    ? AppPalette.red[600]
+                                    : AppPalette.darkGreen[700],
                               ),
                               AppSizedBoxStyles.smWidth(),
                               AppTextStyles.lg(
                                   text: "In",
                                   color: Get.isDarkMode
-                                      ? AppPalette.grey[900]
-                                      : AppPalette.grey[50]),
+                                      ? AppPalette.grey[50]
+                                      : AppPalette.grey[900]),
                             ],
                           ),
                           AppSizedBoxStyles.xl(),
                           CustomTextFormField(
-                              validator: (value) {
-                                if (!RegExp(validationEmail).hasMatch(value)) {
-                                  return "Enter valid email ";
-                                } else {
-                                  return null;
-                                }
-                              },
-                              textInputType: TextInputType.emailAddress,
-                              prefixIcon: Icons.email_outlined,
-                              hintText: "Email",
-                              filled: true,
-                              textEditingController: emailController,
-                              obscureText: false,
+                            validator: (value) {
+                              if (!RegExp(validationEmail).hasMatch(value)) {
+                                return "Enter valid email ";
+                              } else {
+                                return null;
+                              }
+                            },
+                            textInputType: TextInputType.emailAddress,
+                            prefixIcon: Icons.email_outlined,
+                            hintText: "Email",
+                            filled: true,
+                            textEditingController: emailController,
+                            obscureText: false,
                             suffixIcon: null,
                           ),
                           AppSizedBoxStyles.md(),
@@ -93,7 +92,9 @@ class LoginView extends GetView<LoginController> {
                                 },
                                 textInputType: TextInputType.visiblePassword,
                                 prefixIcon: Icons.lock_outline,
-                                suffixIcon: controller.isVisibilty ? Icons.remove_red_eye : Icons.visibility_off,
+                                suffixIcon: controller.isVisibilty
+                                    ? Icons.remove_red_eye
+                                    : Icons.visibility_off,
                                 suffixIconFunction: () {
                                   controller.visibilty();
                                 },
@@ -107,33 +108,31 @@ class LoginView extends GetView<LoginController> {
                           ),
                           AppSizedBoxStyles.xl(),
                           Align(
-                            alignment: Alignment.centerRight,
-                            child: InkWell(
-                              onTap: (){
-                                Get.to(()=>  ForgotPasswordView());
-                              },
-                              child: AppTextStyles.sm(text: "Forget Password?"),
-                            )
-                          ),
+                              alignment: Alignment.centerRight,
+                              child: InkWell(
+                                onTap: () {
+                                  Get.to(() => ForgotPasswordView());
+                                },
+                                child:
+                                    AppTextStyles.sm(text: "Forget Password?", color:Get.isDarkMode  ? AppPalette.grey[50] : AppPalette.grey[900] ),
+                              )),
                           SizedBox(
                             height: 50.h,
                           ),
-                          GetBuilder<LoginController>(builder: (controller){
+                          GetBuilder<LoginController>(builder: (controller) {
                             return CustomOutiLineButtonSecondary(
                               title: "LOGIN",
                               function: () {
-                                if(formKey.currentState!.validate()){
+                                if (formKey.currentState!.validate()) {
                                   String email = emailController.text.trim();
-                                  String password = passwordController.text.trim();
-                                  controller.loginUserWithEmailAndPassword(email: email, password: password);
+                                  String password =
+                                      passwordController.text.trim();
+                                  controller.loginUserWithEmailAndPassword(
+                                      email: email, password: password);
                                 }
                               },
-                              color: Get.isDarkMode
-                                  ? AppPalette.darkGreen[600]
-                                  : AppPalette.red[600],
                             );
                           }),
-
                           AppSizedBoxStyles.xl(),
                           AppTextStyles.md(text: "OR"),
                           AppSizedBoxStyles.md(),
@@ -143,7 +142,7 @@ class LoginView extends GetView<LoginController> {
                               GetBuilder<LoginController>(
                                   builder: (controller) {
                                 return InkWell(
-                                  onTap:  (){
+                                  onTap: () {
                                     controller.signUpWithGoogle();
                                   },
                                   child: Image.asset(

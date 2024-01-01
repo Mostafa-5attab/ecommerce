@@ -21,42 +21,42 @@ class MainScreenView extends GetView<MainScreenController> {
             appBar: AppBar(
               elevation: 0,
               title: AppTextStyles.md(
-                  text: controller.title[controller.currentIndex.value],
-                  color: Get.isDarkMode
-                      ? AppPalette.grey[900]
-                      : AppPalette.grey[50]),
+                text: controller.title[controller.currentIndex.value],
+                color:AppPalette.grey[50],
+              ),
               actions: [
                 CustomIconButton(
                   icon: Icons.shopping_bag_outlined,
+                  color: AppPalette.grey[50],
                   onPressed: () {
-                    controller.changesTheme();
+
                   },
                 ),
               ],
               centerTitle: true,
               backgroundColor: Get.isDarkMode
-                  ? AppPalette.darkGreen[600]
-                  : AppPalette.grey[900],
+                  ? AppPalette.grey[900]
+                  : AppPalette.darkGreen[600],
             ),
             bottomNavigationBar: Container(
               color:
-                  Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[800],
+                  Get.isDarkMode ? AppPalette.grey[800] : AppPalette.grey[100],
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
                 child: GNav(
                   gap: 10.w,
                   // backgroundColor: (Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[800])!,
                   color: Get.isDarkMode
-                      ? AppPalette.grey[900]
-                      : AppPalette.grey[50],
+                      ? AppPalette.grey[50]
+                      : AppPalette.grey[900],
                   textStyle: TextStyle(fontSize: 10.sp),
                   iconSize: 15.sp,
                   activeColor: Get.isDarkMode
-                      ? AppPalette.grey[900]
-                      : AppPalette.grey[50],
+                      ? AppPalette.grey[50]
+                      : AppPalette.grey[900],
                   tabBackgroundColor: (Get.isDarkMode
-                      ? AppPalette.darkGreen[600]
-                      : AppPalette.grey[700])!,
+                      ? AppPalette.grey[700]
+                      : AppPalette.darkGreen[600])!,
                   padding: EdgeInsets.all(12.r),
                   tabs: [
                     GButton(

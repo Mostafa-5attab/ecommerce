@@ -91,6 +91,7 @@ class WelcomeView extends GetView<WelcomeController> {
                   },
                   child: AppTextStyles.md(
                     text: "Get Start",
+                    color: AppPalette.grey[50]
                   ),
                 ),
                 AppSizedBoxStyles.lg(),

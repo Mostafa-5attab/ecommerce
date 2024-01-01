@@ -9,6 +9,7 @@ class FavoritesView extends GetView<FavoritesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.theme.colorScheme.background,
       appBar: AppBar(
         title: const Text('FavoritesView'),
         centerTitle: true,

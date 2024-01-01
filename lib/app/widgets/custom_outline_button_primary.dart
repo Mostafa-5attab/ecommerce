@@ -5,6 +5,7 @@
 // * Packages
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 
 // * Local files
@@ -21,10 +22,11 @@ class CustomOutiLineButtonPrimary extends StatelessWidget {
 
   final String title;
   final Function function ;
+  final Color? color ;
 
   const CustomOutiLineButtonPrimary({
     super.key,
-    required this.title, required this.function,
+    required this.title, required this.function,  this.color,
   });
 
   @override
@@ -38,7 +40,8 @@ class CustomOutiLineButtonPrimary extends StatelessWidget {
             textStyle:  TextStyle(fontSize: 28.sp,),
             side:  BorderSide(
               width: 1.w,
-              color: AppPalette.blue,
+              color: color ?? (Get.isDarkMode
+                  ?AppPalette.red[600] : AppPalette.darkGreen[600])!,
             )),
         onPressed: () {
           function();

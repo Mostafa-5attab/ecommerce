@@ -1,23 +1,24 @@
+import 'package:ecommerce/app/modules/login/controllers/login_controller.dart';
+import 'package:ecommerce/app/routes/app_pages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SettingsController extends GetxController {
-  //TODO: Implement SettingsController
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  var googleSignIn = GoogleSignIn();
+  var displayUserName = '';
+  var displayPhoto = '';
+
+  void signOutFromApp()async{
+    await auth.signOut();
+    await googleSignIn.signOut();
+    isSignIn = false;
+    authBox.remove("auth");
+    update();
+    Get.offNamed(Routes.WELCOME);
+    displayUserName = "";
+    displayPhoto = "";
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

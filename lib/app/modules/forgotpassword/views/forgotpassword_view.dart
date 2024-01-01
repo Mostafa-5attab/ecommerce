@@ -18,18 +18,15 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor:
-            Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900],
+        backgroundColor:context.theme.colorScheme.background,
         appBar: AppBar(
           title: AppTextStyles.md(
             text: "Forgot Password",
             color: Get.isDarkMode
-                ? AppPalette.darkGreen[700]
-                : AppPalette.red[600],
+                ? AppPalette.red[600]
+                : AppPalette.darkGreen[700],
           ),
           centerTitle: true,
-          backgroundColor:
-              Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900],
         ),
         body: Center(
           child: SingleChildScrollView(
@@ -73,9 +70,6 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                             controller.resetPassword(email: email);
                           }
                         },
-                        color: Get.isDarkMode
-                            ? AppPalette.darkGreen[600]
-                            : AppPalette.red[600],
                       );
                     }),
 

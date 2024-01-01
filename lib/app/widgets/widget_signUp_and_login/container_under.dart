@@ -21,8 +21,8 @@ class ContainerUnder extends StatelessWidget {
         transformAlignment: AlignmentDirectional.bottomEnd,
         decoration: BoxDecoration(
             color: Get.isDarkMode
-                ? AppPalette.darkGreen[600]
-                : AppPalette.red[600],
+                ? AppPalette.red[600]
+                : AppPalette.darkGreen[600],
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20.r),
                 topLeft: Radius.circular(20.r))),

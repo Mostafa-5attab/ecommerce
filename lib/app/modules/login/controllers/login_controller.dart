@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../config/app_palette.dart';
-import '../../home/views/home_view.dart';
 import '../../main_screen/views/main_screen_view.dart';
+
+var isSignIn = false ;
+final GetStorage authBox = GetStorage();
 
 class LoginController extends GetxController {
 
@@ -28,6 +31,8 @@ class LoginController extends GetxController {
       await auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) => displayUserName = auth.currentUser!.displayName ?? "");
+      isSignIn = true;
+      authBox.write("auth", isSignIn);
       update();
       Get.offAll(MainScreenView());
     } on FirebaseAuthException catch (error) {
@@ -55,14 +60,16 @@ class LoginController extends GetxController {
   void signUpWithGoogle() async {
     try{
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-      displayUserName = googleUser!.displayName!;
-      displayPhoto = googleUser.photoUrl!;
+      displayUserName = googleUser!.displayName ?? "";
+      displayPhoto = googleUser.photoUrl ?? "";
+      isSignIn = true;
+      authBox.write("auth", isSignIn);
       update();
       Get.offAll(MainScreenView());
     }catch(error){
       print("this the errorrrrrrrrrrrrrrrrrrrrrrrrrr????????????????????// ${error.toString()}");
       Get.snackbar(
-        "Error",
+        "Fack You",
         error.toString(),
         backgroundColor:
         Get.isDarkMode ? AppPalette.darkGreen[700] : AppPalette.red[600],

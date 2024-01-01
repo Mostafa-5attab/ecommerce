@@ -5,12 +5,12 @@ import 'package:ecommerce/app/config/app_text_styles.dart';
 import 'package:ecommerce/app/modules/login/views/login_view.dart';
 import 'package:ecommerce/app/widgets/custom_outline_button_secondary.dart';
 import 'package:ecommerce/app/widgets/custom_text_form_fied.dart';
-import 'package:ecommerce/app/widgets/widgetSignUp/container_under.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/RXP.dart';
+import '../../../widgets/widget_signUp_and_login/container_under.dart';
 import '../controllers/signup_controller.dart';
 
 class SignupView extends GetView<SignupController> {
@@ -25,8 +25,7 @@ class SignupView extends GetView<SignupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900],
+      backgroundColor:context.theme.colorScheme.background,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -50,15 +49,15 @@ class SignupView extends GetView<SignupController> {
                               AppTextStyles.xl(
                                 text: "Sign",
                                 color: Get.isDarkMode
-                                    ? AppPalette.darkGreen[700]
-                                    : AppPalette.red[600],
+                                    ? AppPalette.red[600] : AppPalette.darkGreen[700] ,
                               ),
                               AppSizedBoxStyles.smWidth(),
                               AppTextStyles.lg(
                                   text: "Up",
                                   color: Get.isDarkMode
-                                      ? AppPalette.grey[900]
-                                      : AppPalette.grey[50]),
+                                      ? AppPalette.grey[50]
+                                      : AppPalette.grey[900]
+                                      ),
                             ],
                           ),
                           AppSizedBoxStyles.xl(),
@@ -142,9 +141,7 @@ class SignupView extends GetView<SignupController> {
                                     );
                                   }
                                 },
-                                color: Get.isDarkMode
-                                    ? AppPalette.darkGreen[600]
-                                    : AppPalette.red[600],
+
                               );
                             },
                           ),

@@ -9,6 +9,7 @@ class CategoryView extends GetView<CategoryController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.theme.colorScheme.background,
       appBar: AppBar(
         title: const Text('CategoryView'),
         centerTitle: true,
