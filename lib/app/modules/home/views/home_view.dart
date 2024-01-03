@@ -71,7 +71,7 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
 
-          CardItem(),
+          const CardItem(),
         ],
       ),
     );

@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class SettingsController extends GetxController {
 
   FirebaseAuth auth = FirebaseAuth.instance;
+
   var googleSignIn = GoogleSignIn();
   var displayUserName = '';
   var displayPhoto = '';
