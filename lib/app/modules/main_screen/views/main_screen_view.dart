@@ -71,7 +71,7 @@ class MainScreenView extends GetView<MainScreenController> {
                           color: AppPalette.grey[50], fontSize: 20.sp),
                       iconSize: 25.sp,
                       icon: Icons.favorite,
-                      text: 'Profile',
+                      text: 'Favorites',
                     ),
                     GButton(
                       textStyle: TextStyle(

@@ -11,8 +11,7 @@ class SignupController extends GetxController {
   var displayUserName = '';
   var displayPhoto = '';
 
-  FirebaseAuth auth = FirebaseAuth.instance;
-  var googleSignIn = GoogleSignIn();
+
 
   void visibilty() {
     isVisibilty = !isVisibilty;

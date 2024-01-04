@@ -10,26 +10,30 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
-    // final controller = Get.lazyPut(() => HomeController());
 
     return Obx(() {
       if (controller.isLoading.value) {
-        return Center(child: CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       } else {
         return Expanded(
           child: GridView.builder(
+            shrinkWrap: true,
             itemCount: controller.productList.length,
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              childAspectRatio: 0.8,
-              mainAxisSpacing: 9.0.w,
-              crossAxisSpacing: 6.0.h,
+              childAspectRatio: 0.6,
+              mainAxisSpacing: 9.0.h,
+              crossAxisSpacing: 6.0.w,
               maxCrossAxisExtent: 200.h,
+
+
             ),
             itemBuilder: (BuildContext context, int index) {
               return BuildCardItems(
                 image: controller.productList[index].image,
                 price: controller.productList[index].price,
-                rating: controller.productList[index].rating.rate);
+                rating: controller.productList[index].rating.rate,
+                title: controller.productList[index].title,
+              );
             },
           ),
         );

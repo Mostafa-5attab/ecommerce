@@ -8,12 +8,13 @@ import '../../main_screen/views/main_screen_view.dart';
 
 var isSignIn = false ;
 final GetStorage authBox = GetStorage();
+FirebaseAuth auth = FirebaseAuth.instance;
+
+var googleSignIn = GoogleSignIn();
 
 class LoginController extends GetxController {
 
   bool isVisibilty = false;
-  FirebaseAuth auth = FirebaseAuth.instance;
-  var googleSignIn = GoogleSignIn();
 
   var displayUserName = '';
   var displayPhoto = '';
@@ -34,7 +35,7 @@ class LoginController extends GetxController {
       isSignIn = true;
       authBox.write("auth", isSignIn);
       update();
-      Get.offAll(MainScreenView());
+      Get.offAll(const MainScreenView());
     } on FirebaseAuthException catch (error) {
       String title = error.code.replaceAll(RegExp("-"), " ");
       String message = '';

@@ -7,12 +7,14 @@ class CustomIconButton extends StatelessWidget {
   final IconData icon;
   final Function onPressed;
   final Color? color;
+  final double? iconSize;
 
   const CustomIconButton({
     super.key,
     required this.icon,
     required this.onPressed,
     this.color,
+    this.iconSize,
   });
 
   @override
@@ -23,8 +25,9 @@ class CustomIconButton extends StatelessWidget {
       },
       icon: Icon(
         icon,
-        size: 20.sp,
-        color:color??(Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900]),
+        size: iconSize?.sp ?? 20.sp ,
+        color: color ??
+            (Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900]),
       ),
     );
   }

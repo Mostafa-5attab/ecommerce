@@ -15,10 +15,11 @@ class AppTextStyles {
       {String? text,
       Color? color,
       TextAlign? textAlign,
-      FontWeight? fontWeight}) {
+      FontWeight? fontWeight ,TextOverflow ?textOverflow}) {
     return Text(
       textAlign: textAlign,
       text!,
+      overflow: textOverflow,
       style: TextStyle(
         fontSize: 12.sp,
         fontWeight: fontWeight,

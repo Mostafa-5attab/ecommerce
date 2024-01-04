@@ -22,25 +22,7 @@ class MainScreenController extends GetxController {
 
   final title = ["Home", "Favorites", "Category", "Settings"].obs;
 
-  final GetStorage boxStorage = GetStorage();
-  final key = "isDarkModes";
 
-  saveThemeDataInBox(bool isDark){
-    boxStorage.write(key, isDark);
-  }
-
-  bool getThemeDataFromBox(){
-    return boxStorage.read<bool>(key)?? false;
-  }
-
-  ThemeMode get themeDataGet => getThemeDataFromBox()?ThemeMode.dark : ThemeMode.light;
-
-  void changesTheme() {
-    Get.changeThemeMode(
-      getThemeDataFromBox()?ThemeMode.light:ThemeMode.dark
-    );
-    saveThemeDataInBox(!getThemeDataFromBox());
-  }
 
 
 }
