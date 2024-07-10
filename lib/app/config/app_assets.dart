@@ -10,5 +10,4 @@ const _basePath = "assets/icons" ;
 
 class AppIcons {
   // static const warning = "$_basePath/warning.svg";
-
 }

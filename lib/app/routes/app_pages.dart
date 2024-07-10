@@ -12,6 +12,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/main_screen/bindings/main_screen_binding.dart';
 import '../modules/main_screen/views/main_screen_view.dart';
+import '../modules/new_test/bindings/new_test_binding.dart';
+import '../modules/new_test/views/new_test_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -79,6 +81,11 @@ class AppPages {
       name: _Paths.THEME_DATA,
       page: () => const ThemeDataView(),
       binding: ThemeDataBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEW_TEST,
+      page: () => const NewTestView(),
+      binding: NewTestBinding(),
     ),
   ];
 }

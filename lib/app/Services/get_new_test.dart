@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:ecommerce/app/utils/RXP.dart';
+import 'package:ecommerce/app/model/new_model.dart';
 import 'package:http/http.dart' as http;
 
-import '../model/product_model.dart';
+import '../utils/RXP.dart';
 
-class ProductServices {
-  static Future<List<ProductModels>> getProduct() async {
+class getTest {
+  static Future<List<NewModel>> getNew(int id) async {
     var response = await http.get(
-      Uri.parse("$baseUrl/products"),
+      Uri.parse("https://rickandmortyapi.com/api/character/$id}"),
     );
 
     if (response.statusCode == 200) {
@@ -16,8 +16,8 @@ class ProductServices {
 
       List<dynamic> decodedData = jsonDecode(jsonData);
 
-      List<ProductModels> products = decodedData.map((item) {
-        return ProductModels.fromJson(item as Map<String, dynamic>);
+      List<NewModel> products = decodedData.map((item) {
+        return NewModel.fromJson(item as Map<String, dynamic>);
       }).toList();
 
       return products;

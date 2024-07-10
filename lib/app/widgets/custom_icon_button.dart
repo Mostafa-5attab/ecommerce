@@ -1,7 +1,6 @@
-import 'package:ecommerce/app/config/app_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+
 
 class CustomIconButton extends StatelessWidget {
   final IconData icon;
@@ -26,8 +25,7 @@ class CustomIconButton extends StatelessWidget {
       icon: Icon(
         icon,
         size: iconSize?.sp ?? 20.sp ,
-        color: color ??
-            (Get.isDarkMode ? AppPalette.grey[50] : AppPalette.grey[900]),
+        color: color ,
       ),
     );
   }

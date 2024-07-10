@@ -13,6 +13,7 @@ abstract class Routes {
   static const SETTINGS = _Paths.SETTINGS;
   static const CATEGORY = _Paths.CATEGORY;
   static const THEME_DATA = _Paths.THEME_DATA;
+  static const NEW_TEST = _Paths.NEW_TEST;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const SETTINGS = '/settings';
   static const CATEGORY = '/category';
   static const THEME_DATA = '/theme-data';
+  static const NEW_TEST = '/new-test';
 }

@@ -24,15 +24,18 @@ class CardItem extends StatelessWidget {
               mainAxisSpacing: 9.0.h,
               crossAxisSpacing: 6.0.w,
               maxCrossAxisExtent: 200.h,
-
-
             ),
             itemBuilder: (BuildContext context, int index) {
-              return BuildCardItems(
-                image: controller.productList[index].image,
-                price: controller.productList[index].price,
-                rating: controller.productList[index].rating.rate,
-                title: controller.productList[index].title,
+              return InkWell(
+                onTap: (){
+                  print(index);
+                },
+                child: BuildCardItems(
+                  image: controller.productList[index].image,
+                  price: controller.productList[index].price,
+                  rating: controller.productList[index].rating.rate,
+                  title: controller.productList[index].title,
+                ),
               );
             },
           ),

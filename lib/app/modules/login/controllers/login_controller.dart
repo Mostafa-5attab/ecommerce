@@ -12,7 +12,7 @@ FirebaseAuth auth = FirebaseAuth.instance;
 
 var googleSignIn = GoogleSignIn();
 
-class LoginController extends GetxController {
+class LoginController extends GetxController {  
 
   bool isVisibilty = false;
 

@@ -14,8 +14,9 @@ class HomeController extends GetxController {
     super.onInit();
     getProduct();
   }
+
   void getProduct() async {
-    List<ProductModels> products = (await ProductServices.getProduct()) as List<ProductModels>;
+    List<ProductModels> products = (await ProductServices.getProduct());
     try {
       isLoading(true);
       if (products.isNotEmpty) {
